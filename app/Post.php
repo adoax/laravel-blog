@@ -4,7 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Post extends Model
 {
@@ -61,6 +63,18 @@ class Post extends Model
     {
         $this->attributes['excerpt'] = $atr;
 
+    }
+
+    public function setImageAttribute($atr)
+    {
+
+        if ($atr instanceof UploadedFile ) {
+            $this->attributes['image'] = $atr->hashName();
+        }
+
+        if (!$atr instanceof UploadedFile) {
+            $this->attributes['image'] = $atr;
+        }
     }
 
 

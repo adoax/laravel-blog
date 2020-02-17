@@ -13,6 +13,7 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title')->unique();
@@ -21,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->text('excerpt');
             $table->string('image');
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }

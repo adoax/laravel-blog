@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Post;
 use Exception;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\UploadedFile;
+use Illuminate\View\View;
 
 class PostController extends Controller
 {
@@ -18,21 +21,21 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return void
+     * @return Factory|View
      */
     public function index()
     {
-        //
+        return view('posts.index', ['posts' => Post::all()]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return void
+     * @return Factory|View
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -43,7 +46,11 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $post = Post::create($request->all());
+        $file = $request->file('image');
+
+        if ($file->store('images', 'public')) {
+            $post = Post::create($request->all());
+        }
 
         return redirect()->route('posts.show', $post->id)->with('status', 'Vous avez créer un article');
     }
@@ -52,22 +59,22 @@ class PostController extends Controller
      * Display the specified resource.
      *
      * @param Post $post
-     * @return void
+     * @return Factory|View
      */
     public function show(Post $post)
     {
-        //
+        return view('posts.show', compact('post'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param Post $post
-     * @return void
+     * @return Factory|View
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -79,7 +86,16 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
+        if ($request->image instanceof UploadedFile) {
+            $file = $request->file('image');
+
+            if ($file->store('images', 'public')) {
+                $post->update($request->all());
+            }
+        }
+
         $post->update($request->all());
+
 
         return redirect()->route('posts.show', $post->id);
     }
