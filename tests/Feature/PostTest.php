@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\Post;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Str;
@@ -48,20 +50,17 @@ class PostTest extends TestCase
     {
         $this->loginWithFakeUser();
 
-        $title = $this->faker->unique()->sentence;
-        $content = $this->faker->paragraph();
-
         $response = $this->post('/posts', [
-            'title' => $title,
-            'slug' => Str::slug($title),
-            'content' => $content,
-            'excerpt' => Str::words($content, 50),
+            'title' => $this->faker->unique()->sentence,
+            'content' => $this->faker->paragraph(),
             'image' => $this->faker->imageUrl(450, 350)
         ]);
 
-        $post = Post::first();
-        $response->assertRedirect(route('posts.show', $post->id));
-        $this->assertCount(1, Post::all());
+        $post = Post::all();
+        $response->assertRedirect(route('posts.show', $post->first()->id));
+        $this->assertCount(1, $post);
+        $this->assertInstanceOf(Carbon::class, $post->first()->created_at);
+        $this->assertInstanceOf(Carbon::class, $post->first()->updated_at);
     }
 
     /**
@@ -84,24 +83,47 @@ class PostTest extends TestCase
         $response->assertSessionHasErrors('title');
     }
 
-    /**
-     * @test
-     */
-    public function posts_errors_slug()
+    /** @test */
+    public function posts_generate_edit_slug()
     {
         $this->loginWithFakeUser();
 
         $title = $this->faker->unique()->sentence;
-        $content = $this->faker->paragraph();
+        $slug = $this->faker->sentence;
 
         $response = $this->post('/posts', [
             'title' => $title,
-            'slug' => '',
-            'content' => $content,
-            'excerpt' => Str::words($content, 50),
+            'slug' => $slug,
+            'content' => $this->faker->paragraph(),
             'image' => $this->faker->imageUrl(450, 350)
         ]);
-        $response->assertSessionHasErrors('slug');
+
+        $response->assertRedirect();
+        $post  = Post::first();
+
+        $this->assertEquals(Str::slug($slug), $post->slug);
+
+    }
+
+    /** @test */
+    public function posts_generate_edit_excerpt()
+    {
+        $this->loginWithFakeUser();
+
+        $excerpt = $this->faker->sentence;
+
+        $response = $this->post('/posts', [
+            'title' => $this->faker->unique()->sentence,
+            'content' => $this->faker->paragraph(),
+            'excerpt' => $excerpt,
+            'image' => $this->faker->imageUrl(450, 350)
+        ]);
+
+        $response->assertRedirect();
+        $post  = Post::first();
+
+        $this->assertEquals($excerpt, $post->excerpt);
+
     }
 
     /**
@@ -124,25 +146,6 @@ class PostTest extends TestCase
         $response->assertSessionHasErrors('content');
     }
 
-    /**
-     * @test
-     */
-    public function posts_errors_excerpt()
-    {
-        $this->loginWithFakeUser();
-
-        $title = $this->faker->unique()->sentence;
-        $content = $this->faker->paragraph();
-
-        $response = $this->post('/posts', [
-            'title' => $title,
-            'slug' => Str::slug($title),
-            'content' => $content,
-            'excerpt' => '',
-            'image' => $this->faker->imageUrl(450, 350)
-        ]);
-        $response->assertSessionHasErrors('excerpt');
-    }
 
     /**
      * @test
@@ -185,7 +188,7 @@ class PostTest extends TestCase
 
         $response = $this->put('posts/' . $oldPost->id, [
             'title' => 'New title',
-            'slug' => 'new-title',
+            'slug' => $oldPost->slug,
             'content' => $oldPost->content,
             'excerpt' => $oldPost->excerpt,
             'image' => $oldPost->image
@@ -194,7 +197,6 @@ class PostTest extends TestCase
         $response->assertRedirect(route('posts.show', $oldPost->id));
 
         $this->assertEquals('New title', Post::first()->title);
-        $this->assertEquals('new-title', Post::first()->slug);
 
 
     }
@@ -220,6 +222,26 @@ class PostTest extends TestCase
         $response = $this->delete(route('posts.destroy', $oldPost->id));
         $response->assertRedirect(route('posts.index'));
         $this->assertCount(0, Post::all());
+
+    }
+
+    /** @test */
+    public function post_author_automatically_added()
+    {
+        $this->loginWithFakeUser();
+        $this->withoutExceptionHandling();
+
+        $response = $this->post('/posts', [
+            'title' => $this->faker->unique()->sentence,
+            'content' => $this->faker->paragraph(),
+            'image' => $this->faker->imageUrl(450, 350)
+        ]);
+
+        $post = Post::first();
+        $user = User::first();
+
+        $this->assertCount(1, User::all());
+        $this->assertEquals($user->id, $post->user_id);
 
     }
 }
