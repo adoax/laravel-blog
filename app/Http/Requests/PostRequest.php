@@ -23,9 +23,22 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+
+        $validate = [
             'title' => ['required'],
             'content' => ['required'],
         ];
+
+        if ($this->getMethod() === "PUT") {
+            return $validate;
+        }
+
+        if ($this->getMethod() === 'POST') {
+            return array_merge($validate, [
+                'image' => 'required'
+            ]);
+        }
+
+
     }
 }

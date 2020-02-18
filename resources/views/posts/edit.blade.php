@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@include('partials.ckeditor')
 
 @section('content')
 
@@ -25,8 +26,16 @@
         </div>
 
         <div class="form-group">
+            <label for="excerpt">Extrait</label>
+            <textarea class="form-control " name="excerpt" rows="3" placeholder="Court présentation de l'article..">{{ old('excerpt', $post->excerpt) }}
+        </textarea>
+            @error('excerpt') <small id="content" class="form-text text-danger">{{$message}}</small> @enderror
+        </div>
+
+
+        <div class="form-group">
             <label for="image">Image</label>
-            <input type="file" class="form-control-file" name="image" id="image"
+            <input type="file" class="form-control-file files" name="image" id="image"
                    value="{{ old('image', $post->image) }}" placeholder="Image de présentation de l'article">
             @error('image') <small id="image" class="form-text text-danger">{{$message}}</small> @enderror
         </div>

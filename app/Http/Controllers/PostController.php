@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class PostController extends Controller
@@ -16,6 +17,14 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    /**
+     * @return Factory|View
+     */
+    public function viewAll()
+    {
+        return view('posts.view', ['posts' => Post::all()]);
     }
 
     /**
@@ -86,15 +95,16 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        if ($request->image instanceof UploadedFile) {
+        if ($request->image ) {
             $file = $request->file('image');
 
             if ($file->store('images', 'public')) {
+                Storage::delete('public/images/' . $post->image);
                 $post->update($request->all());
             }
         }
+            $post->update($request->all());
 
-        $post->update($request->all());
 
 
         return redirect()->route('posts.show', $post->id);
@@ -109,6 +119,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+
+        Storage::delete('public/images/' . $post->image);
         $post->delete();
 
         return redirect()->route('posts.index');

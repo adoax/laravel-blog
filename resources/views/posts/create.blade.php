@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@include('partials.ckeditor')
+
 @section('content')
 
     <h1 class="pt-3">Création d'un article</h1>
@@ -8,27 +10,35 @@
         @csrf
 
 
-    <div class="form-group">
-        <label for="title">Titre</label>
-        <input type="text"
-               class="form-control" name="title" id="title" placeholder="Titre de l'article" value="{{ old('title') }}">
-        @error('title') <small id="title" class="form-text text-danger">{{$message}}</small> @enderror
-    </div>
+        <div class="form-group">
+            <label for="title">Titre</label>
+            <input type="text"
+                   class="form-control" name="title" id="title" placeholder="Titre de l'article"
+                   value="{{ old('title') }}">
+            @error('title') <small id="title" class="form-text text-danger">{{$message}}</small> @enderror
+        </div>
 
-    <div class="form-group">
-        <label for="content">Contenue</label>
-        <textarea class="form-control " name="content" id="editor" rows="3" placeholder="Contenue de l'article..">
+        <div class="form-group">
+            <label for="content">Contenue</label>
+            <textarea class="form-control " name="content" id="editor" rows="3" placeholder="Contenue de l'article..">
             {{ old('content') }}
         </textarea>
-        @error('content') <small id="content" class="form-text text-danger">{{$message}}</small> @enderror
-    </div>
+            @error('content') <small id="content" class="form-text text-danger">{{$message}}</small> @enderror
+        </div>
 
-    <div class="form-group">
-        <label for="image">Image</label>
-        <input type="file" class="form-control-file" name="image" id="image" value="{{ old('image') }}" placeholder="Image de présentation de l'article" >
-        <input type="hidden" name="image" value="{{ old('image') }}">
-        @error('image') <small id="image" class="form-text text-danger">{{$message}}</small> @enderror
-    </div>
+        <div class="form-group">
+            <label for="excerpt">Extrait</label>
+            <textarea class="form-control " name="excerpt" rows="3"
+                      placeholder="Court présentation de l'article..">{{ old('excerpt') }}</textarea>
+            @error('excerpt') <small id="content" class="form-text text-danger">{{$message}}</small> @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" class="form-control-file files" name="image" id="image" value="{{ old('image') }} "
+                   placeholder="Image de présentation de l'article">
+            @error('image') <small id="image" class="form-text text-danger">{{$message}}</small> @enderror
+        </div>
 
         <button type="submit" class="btn btn-success">Enregistrer</button>
 

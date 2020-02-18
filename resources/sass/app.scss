@@ -6,4 +6,14 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+//CSS CKEditor
 @import "image";
+
+//Upload image
+@import '../fileuploader/dist/font/font-fileuploader.css';
+@import '../fileuploader/dist/jquery.fileuploader.min.css';
+
+//CSS personaliser
+@import "style";
+

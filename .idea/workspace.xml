@@ -2,8 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bec20584-a340-4053-bfee-768cd63b1593" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/fonts/font-fileuploader.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/font-fileuploader.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/font-fileuploader.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/font-fileuploader.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/ckeditor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/fileuploader/dist/font/font-fileuploader.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/fileuploader/dist/font/font-fileuploader.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/fileuploader/dist/font/font-fileuploader.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/fileuploader/dist/font/font-fileuploader.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/fileuploader/dist/font/font-fileuploader.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/fileuploader/dist/jquery.fileuploader.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/fileuploader/dist/jquery.fileuploader.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/fileuploader/readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ckeditor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/src_dropzone.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/sass/_style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/ckeditor.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/posts/view.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/PostTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/PostTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/PostRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/PostRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/posts/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/posts/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/posts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/posts/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +154,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/sass" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -136,15 +165,19 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\sass" />
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\js" />
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\lang" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources" />
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\js" />
       <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\views\posts" />
       <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\views" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\lang" />
-    </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.PostTest (1)">
+  <component name="RunManager" selected="PHPUnit.tests">
     <configuration name="PostTest (1)" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Unit\PostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Unit/PostTest.php" scope="Class" />
       <method v="2" />
@@ -161,21 +194,21 @@
       <TestRunner class="Tests\Feature\PostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PostTest.php" method="posts_errors_image" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="PostTest.posts_errors_title" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\PostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/PostTest.php" method="posts_errors_title" scope="Method" />
-      <method v="2" />
-    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml" directory="$PROJECT_DIR$/tests" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.tests" />
         <item itemvalue="PHPUnit.PostTest (1)" />
         <item itemvalue="PHPUnit.PostTest.posts_edit" />
         <item itemvalue="PHPUnit.PostTest.posts_errors_image" />
         <item itemvalue="PHPUnit.PostTest.posts_errors_content" />
-        <item itemvalue="PHPUnit.PostTest.posts_errors_title" />
       </list>
     </recent_temporary>
   </component>
@@ -197,7 +230,7 @@
       <workItem from="1581669727102" duration="11656000" />
       <workItem from="1581929335750" duration="948000" />
       <workItem from="1581969372953" duration="21000" />
-      <workItem from="1582012397394" duration="9824000" />
+      <workItem from="1582012397394" duration="25625000" />
     </task>
     <servers />
   </component>
@@ -252,26 +285,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1581585945470" />
+    <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582036299294">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582036299294" />
     <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1581608583297">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1581608583297" />
-    <state width="1877" height="215" key="GridCell.Tab.0.bottom" timestamp="1582024635493">
+    <state width="1877" height="215" key="GridCell.Tab.0.bottom" timestamp="1582041196907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582024635493" />
-    <state width="1877" height="215" key="GridCell.Tab.0.center" timestamp="1582024635493">
+    <state width="1877" height="215" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582041196907" />
+    <state width="1877" height="215" key="GridCell.Tab.0.center" timestamp="1582041196906">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582024635493" />
-    <state width="1877" height="215" key="GridCell.Tab.0.left" timestamp="1582024635493">
+    <state width="1877" height="215" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582041196906" />
+    <state width="1877" height="215" key="GridCell.Tab.0.left" timestamp="1582041196906">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582024635493" />
-    <state width="1877" height="215" key="GridCell.Tab.0.right" timestamp="1582024635493">
+    <state width="1877" height="215" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582041196906" />
+    <state width="1877" height="215" key="GridCell.Tab.0.right" timestamp="1582041196906">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582024635493" />
+    <state width="1877" height="215" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582041196906" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1581702208347">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -304,10 +341,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="252" width="607" height="536" key="find.popup/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1581613057457" />
-    <state x="616" y="242" key="run.anything.popup" timestamp="1581523587035">
+    <state x="616" y="242" key="run.anything.popup" timestamp="1582041352273">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1581523587035" />
+    <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582041352273" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581599590672">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

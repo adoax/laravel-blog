@@ -22,4 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes(['verify' => true]);
 
-Route::resource('/posts', 'PostController');
+Route::get('view', 'PostController@viewAll')->name('posts.view');
+Route::resource('posts', 'PostController');
