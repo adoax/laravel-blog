@@ -7,6 +7,8 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
@@ -48,12 +50,17 @@ class PostTest extends TestCase
      */
     public function posts_created(): void
     {
+        Storage::fake('public');
+
+        $file = UploadedFile::fake()->image('image.jpg');
+
+
         $this->loginWithFakeUser();
 
         $response = $this->post('/posts', [
             'title' => $this->faker->unique()->sentence,
             'content' => $this->faker->paragraph(),
-            'image' => $this->faker->imageUrl(450, 350)
+            'image' => $file
         ]);
 
         $post = Post::all();
@@ -61,6 +68,8 @@ class PostTest extends TestCase
         $this->assertCount(1, $post);
         $this->assertInstanceOf(Carbon::class, $post->first()->created_at);
         $this->assertInstanceOf(Carbon::class, $post->first()->updated_at);
+        Storage::disk('public')->assertExists('images/' . $file->hashName());
+        Storage::disk('public')->assertMissing('failling.jpg');
     }
 
     /**
@@ -69,7 +78,8 @@ class PostTest extends TestCase
     public function posts_errors_title()
     {
         $this->loginWithFakeUser();
-
+        
+        $file = UploadedFile::fake()->image('image.jpg');
         $title = $this->faker->unique()->sentence;
         $content = $this->faker->paragraph();
 
@@ -78,7 +88,7 @@ class PostTest extends TestCase
             'slug' => Str::slug($title),
             'content' => $content,
             'excerpt' => Str::words($content, 50),
-            'image' => $this->faker->imageUrl(450, 350)
+            'image' => $file
         ]);
         $response->assertSessionHasErrors('title');
     }
@@ -86,6 +96,11 @@ class PostTest extends TestCase
     /** @test */
     public function posts_generate_edit_slug()
     {
+        Storage::fake('public');
+
+        $file = UploadedFile::fake()->image('image.jpg');
+
+
         $this->loginWithFakeUser();
 
         $title = $this->faker->unique()->sentence;
@@ -95,19 +110,26 @@ class PostTest extends TestCase
             'title' => $title,
             'slug' => $slug,
             'content' => $this->faker->paragraph(),
-            'image' => $this->faker->imageUrl(450, 350)
+            'image' => $file
         ]);
 
         $response->assertRedirect();
-        $post  = Post::first();
+        $post = Post::first();
 
         $this->assertEquals(Str::slug($slug), $post->slug);
+        Storage::disk('public')->assertExists('images/' . $file->hashName());
+        Storage::disk('public')->assertMissing('failling.jpg');
 
     }
 
     /** @test */
     public function posts_generate_edit_excerpt()
     {
+        Storage::fake('public');
+
+        $file = UploadedFile::fake()->image('image.jpg');
+
+
         $this->loginWithFakeUser();
 
         $excerpt = $this->faker->sentence;
@@ -116,13 +138,15 @@ class PostTest extends TestCase
             'title' => $this->faker->unique()->sentence,
             'content' => $this->faker->paragraph(),
             'excerpt' => $excerpt,
-            'image' => $this->faker->imageUrl(450, 350)
+            'image' => $file
         ]);
 
         $response->assertRedirect();
-        $post  = Post::first();
+        $post = Post::first();
 
         $this->assertEquals($excerpt, $post->excerpt);
+        Storage::disk('public')->assertExists('images/' . $file->hashName());
+        Storage::disk('public')->assertMissing('failling.jpg');
 
     }
 
@@ -133,6 +157,7 @@ class PostTest extends TestCase
     {
         $this->loginWithFakeUser();
 
+        $file = UploadedFile::fake()->image('image.jpg');
         $title = $this->faker->unique()->sentence;
         $content = $this->faker->paragraph();
 
@@ -141,7 +166,7 @@ class PostTest extends TestCase
             'slug' => Str::slug($title),
             'content' => '',
             'excerpt' => Str::words($content, 50),
-            'image' => $this->faker->imageUrl(450, 350)
+            'image' => $file
         ]);
         $response->assertSessionHasErrors('content');
     }
@@ -152,6 +177,11 @@ class PostTest extends TestCase
      */
     public function posts_errors_image()
     {
+        Storage::fake('public');
+
+        $file = UploadedFile::fake()->image('image.jpg');
+
+
         $this->loginWithFakeUser();
 
         $title = $this->faker->unique()->sentence;
@@ -164,13 +194,18 @@ class PostTest extends TestCase
             'excerpt' => Str::words($content, 50),
             'image' => ''
         ]);
-        $response->assertSessionHasErrors('image');
+        Storage::disk('public')->assertMissing('missing.jpg');
     }
 
 
     /** @test */
     public function posts_edit(): void
     {
+        Storage::fake('public');
+
+        $file = UploadedFile::fake()->image('image.jpg');
+
+
         $this->loginWithFakeUser();
 
         $title = $this->faker->unique()->sentence;
@@ -181,22 +216,25 @@ class PostTest extends TestCase
             'slug' => Str::slug($title),
             'content' => $content,
             'excerpt' => Str::words($content, 50),
-            'image' => $this->faker->imageUrl(450, 350)
+            'image' => $file
         ]);
 
         $oldPost = Post::first();
-
+        $newFile = UploadedFile::fake()->image('newImage.jpg');
         $response = $this->put('posts/' . $oldPost->id, [
             'title' => 'New title',
             'slug' => $oldPost->slug,
             'content' => $oldPost->content,
             'excerpt' => $oldPost->excerpt,
-            'image' => $oldPost->image
+            'image' => $newFile
         ]);
 
         $response->assertRedirect(route('posts.show', $oldPost->id));
 
         $this->assertEquals('New title', Post::first()->title);
+        Storage::disk('public')->assertExists('images/' . $newFile->hashName());
+        Storage::disk('public')->assertExists('images/' . Post::first()->image);
+        Storage::disk('public')->assertMissing('failling.jpg');
 
 
     }
@@ -204,6 +242,11 @@ class PostTest extends TestCase
     /** @test */
     public function posts_delete()
     {
+        Storage::fake('public');
+
+        $file = UploadedFile::fake()->image('image.jpg');
+
+
         $this->loginWithFakeUser();
 
         $title = $this->faker->unique()->sentence;
@@ -214,7 +257,7 @@ class PostTest extends TestCase
             'slug' => Str::slug($title),
             'content' => $content,
             'excerpt' => Str::words($content, 50),
-            'image' => $this->faker->imageUrl(450, 350)
+            'image' => $file
         ]);
 
         $oldPost = Post::first();
@@ -223,18 +266,24 @@ class PostTest extends TestCase
         $response->assertRedirect(route('posts.index'));
         $this->assertCount(0, Post::all());
 
+
     }
 
     /** @test */
     public function post_author_automatically_added()
     {
+        Storage::fake('public');
+
+        $file = UploadedFile::fake()->image('image.jpg');
+
+
         $this->loginWithFakeUser();
         $this->withoutExceptionHandling();
 
         $response = $this->post('/posts', [
             'title' => $this->faker->unique()->sentence,
             'content' => $this->faker->paragraph(),
-            'image' => $this->faker->imageUrl(450, 350)
+            'image' => $file
         ]);
 
         $post = Post::first();
@@ -242,6 +291,7 @@ class PostTest extends TestCase
 
         $this->assertCount(1, User::all());
         $this->assertEquals($user->id, $post->user_id);
+
 
     }
 }
