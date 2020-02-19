@@ -27,6 +27,7 @@ class PostRequest extends FormRequest
         $validate = [
             'title' => ['required'],
             'content' => ['required'],
+            'categories' => ['required']
         ];
 
         if ($this->getMethod() === "PUT") {

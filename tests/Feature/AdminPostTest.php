@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Category;
 use App\Post;
 use App\User;
 use Carbon\Carbon;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
-class PostTest extends TestCase
+class AdminPostTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
@@ -23,7 +24,7 @@ class PostTest extends TestCase
      */
     public function index_not_auth_has_redirect(): void
     {
-        $response = $this->get('/posts');
+        $response = $this->get('/admin/posts');
 
         $response->assertRedirect('/login');
         $response->assertSee('Redirecting');
@@ -37,7 +38,7 @@ class PostTest extends TestCase
     {
         $this->loginWithFakeUser();
 
-        $response = $this->get('/posts');
+        $response = $this->get('/admin/posts');
         $response->assertSuccessful();
         $response->assertStatus(200);
 
@@ -53,18 +54,19 @@ class PostTest extends TestCase
         Storage::fake('public');
 
         $file = UploadedFile::fake()->image('image.jpg');
-
+        $categorie = factory(Category::class)->create();
 
         $this->loginWithFakeUser();
 
-        $response = $this->post('/posts', [
+        $response = $this->post('admin/posts', [
             'title' => $this->faker->unique()->sentence,
             'content' => $this->faker->paragraph(),
-            'image' => $file
+            'image' => $file,
+            'categories' => $categorie
         ]);
 
         $post = Post::all();
-        $response->assertRedirect(route('posts.show', $post->first()->id));
+        $response->assertRedirect(route('admin.posts.show', $post->first()->id));
         $this->assertCount(1, $post);
         $this->assertInstanceOf(Carbon::class, $post->first()->created_at);
         $this->assertInstanceOf(Carbon::class, $post->first()->updated_at);
@@ -78,12 +80,12 @@ class PostTest extends TestCase
     public function posts_errors_title()
     {
         $this->loginWithFakeUser();
-        
+
         $file = UploadedFile::fake()->image('image.jpg');
         $title = $this->faker->unique()->sentence;
         $content = $this->faker->paragraph();
 
-        $response = $this->post('/posts', [
+        $response = $this->post('admin/posts', [
             'title' => '',
             'slug' => Str::slug($title),
             'content' => $content,
@@ -99,18 +101,19 @@ class PostTest extends TestCase
         Storage::fake('public');
 
         $file = UploadedFile::fake()->image('image.jpg');
-
+        $categorie = factory(Category::class)->create();
 
         $this->loginWithFakeUser();
 
         $title = $this->faker->unique()->sentence;
         $slug = $this->faker->sentence;
 
-        $response = $this->post('/posts', [
+        $response = $this->post('admin/posts', [
             'title' => $title,
             'slug' => $slug,
             'content' => $this->faker->paragraph(),
-            'image' => $file
+            'image' => $file,
+            'categories' => $categorie
         ]);
 
         $response->assertRedirect();
@@ -129,16 +132,17 @@ class PostTest extends TestCase
 
         $file = UploadedFile::fake()->image('image.jpg');
 
-
+        $categorie = factory(Category::class)->create();
         $this->loginWithFakeUser();
 
         $excerpt = $this->faker->sentence;
 
-        $response = $this->post('/posts', [
+        $response = $this->post('admin/posts', [
             'title' => $this->faker->unique()->sentence,
             'content' => $this->faker->paragraph(),
             'excerpt' => $excerpt,
-            'image' => $file
+            'image' => $file,
+            'categories' => $categorie
         ]);
 
         $response->assertRedirect();
@@ -161,7 +165,7 @@ class PostTest extends TestCase
         $title = $this->faker->unique()->sentence;
         $content = $this->faker->paragraph();
 
-        $response = $this->post('/posts', [
+        $response = $this->post('admin/posts', [
             'title' => $title,
             'slug' => Str::slug($title),
             'content' => '',
@@ -187,7 +191,7 @@ class PostTest extends TestCase
         $title = $this->faker->unique()->sentence;
         $content = $this->faker->paragraph();
 
-        $response = $this->post('/posts', [
+        $response = $this->post('admin/posts', [
             'title' => $title,
             'slug' => Str::slug($title),
             'content' => $content,
@@ -204,32 +208,34 @@ class PostTest extends TestCase
         Storage::fake('public');
 
         $file = UploadedFile::fake()->image('image.jpg');
-
+        $categorie = factory(Category::class)->create();
 
         $this->loginWithFakeUser();
 
         $title = $this->faker->unique()->sentence;
         $content = $this->faker->paragraph();
 
-        $this->post('/posts', [
+        $this->post('admin/posts', [
             'title' => $title,
             'slug' => Str::slug($title),
             'content' => $content,
             'excerpt' => Str::words($content, 50),
-            'image' => $file
+            'image' => $file,
+            'categories' => $categorie
         ]);
 
         $oldPost = Post::first();
         $newFile = UploadedFile::fake()->image('newImage.jpg');
-        $response = $this->put('posts/' . $oldPost->id, [
+        $response = $this->put('admin/posts/' . $oldPost->id, [
             'title' => 'New title',
             'slug' => $oldPost->slug,
             'content' => $oldPost->content,
             'excerpt' => $oldPost->excerpt,
-            'image' => $newFile
+            'image' => $newFile,
+            'categories' => $categorie
         ]);
 
-        $response->assertRedirect(route('posts.show', $oldPost->id));
+        $response->assertRedirect(route('admin.posts.show', $oldPost->id));
 
         $this->assertEquals('New title', Post::first()->title);
         Storage::disk('public')->assertExists('images/' . $newFile->hashName());
@@ -245,25 +251,26 @@ class PostTest extends TestCase
         Storage::fake('public');
 
         $file = UploadedFile::fake()->image('image.jpg');
-
+        $categorie = factory(Category::class)->create();
 
         $this->loginWithFakeUser();
 
         $title = $this->faker->unique()->sentence;
         $content = $this->faker->paragraph;
 
-        $this->post('/posts', [
+        $this->post('admin/posts', [
             'title' => $title,
             'slug' => Str::slug($title),
             'content' => $content,
             'excerpt' => Str::words($content, 50),
-            'image' => $file
+            'image' => $file,
+            'categories' => $categorie
         ]);
 
         $oldPost = Post::first();
 
-        $response = $this->delete(route('posts.destroy', $oldPost->id));
-        $response->assertRedirect(route('posts.index'));
+        $response = $this->delete(route('admin.posts.destroy', $oldPost->id));
+        $response->assertRedirect(route('admin.posts.index'));
         $this->assertCount(0, Post::all());
 
 
@@ -276,14 +283,15 @@ class PostTest extends TestCase
 
         $file = UploadedFile::fake()->image('image.jpg');
 
+        $categorie = factory(Category::class)->create();
 
         $this->loginWithFakeUser();
-        $this->withoutExceptionHandling();
 
-        $response = $this->post('/posts', [
+        $response = $this->post('admin/posts', [
             'title' => $this->faker->unique()->sentence,
             'content' => $this->faker->paragraph(),
-            'image' => $file
+            'image' => $file,
+            'categories' => $categorie
         ]);
 
         $post = Post::first();

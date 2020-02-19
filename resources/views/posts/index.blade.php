@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <a href="{{ route('posts.create') }}" class="btn btn-success mb-3 float-right">Créer un article</a>
+    <a href="{{ route('admin.posts.create') }}" class="btn btn-success mb-3 float-right">Créer un article</a>
     <table class="table table-striped">
         <thead class="thead-inverse">
         <tr>
@@ -17,9 +17,9 @@
             <td>{{ $post->title }}</td>
             <td>{{ $post->excerpt }}</td>
             <td class="row">
-                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success">Voir</a>
-                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Editer</a>
-                <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+                <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-success">Voir</a>
+                <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">Editer</a>
+                <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger" type="submit">Supprimer</button>

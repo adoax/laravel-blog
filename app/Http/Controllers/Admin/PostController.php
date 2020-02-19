@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Category;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Post;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
@@ -44,7 +45,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        return view('posts.create', ['categories' => Category::all()]);
     }
 
     /**
@@ -59,9 +60,10 @@ class PostController extends Controller
 
         if ($file->store('images', 'public')) {
             $post = Post::create($request->all());
+            $post->categories()->attach($request->categories);
         }
 
-        return redirect()->route('posts.show', $post->id)->with('status', 'Vous avez créer un article');
+        return redirect()->route('admin.posts.show', $post->id)->with('status', 'Vous avez créer un article');
     }
 
     /**
@@ -83,7 +85,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        $categories = Category::all();
+
+
+        return view('posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -95,19 +100,24 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        if ($request->image ) {
+        if ($request->image) {
             $file = $request->file('image');
 
             if ($file->store('images', 'public')) {
                 Storage::delete('public/images/' . $post->image);
                 $post->update($request->all());
+                $post->categories()->sync($post->categories);
             }
         }
+
+        if (!$request->image) {
             $post->update($request->all());
+            $post->categories()->sync($post->categories);
+
+        }
 
 
-
-        return redirect()->route('posts.show', $post->id);
+        return redirect()->route('admin.posts.show', $post->id);
     }
 
     /**
@@ -123,6 +133,6 @@ class PostController extends Controller
         Storage::delete('public/images/' . $post->image);
         $post->delete();
 
-        return redirect()->route('posts.index');
+        return redirect()->route('admin.posts.index');
     }
 }

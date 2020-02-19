@@ -6,7 +6,7 @@
 
     <h1 class="pt-3">Edition de {{ $post->title }}</h1>
 
-    <form action="{{ route('posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -17,6 +17,20 @@
                    value="{{ old('title', $post->title) }}">
             @error('title') <small id="title" class="form-text text-danger">{{$message}}</small> @enderror
         </div>
+
+        <div class="form-group">
+            <label for="categories">Catégories</label>
+                @dump($post->categories)
+            <select class="form-control" name="categories[]" multiple>
+                @foreach($categories as $category)
+                    <option value="{{$category->id}}"
+                            {{ in_array($category->id, old('categories') ?: $post->categories->pluck('id')->toArray()) ? 'selected' : '' }}>
+                        {{$category->name}}
+                    </option>
+                    @endforeach
+            </select>
+        </div>
+        @error('categories')  <small id="categories" class="form-text text-danger">{{$message}}</small> @enderror
 
         <div class="form-group">
             <label for="content">Contenue</label>

@@ -22,5 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes(['verify' => true]);
 
-Route::get('view', 'PostController@viewAll')->name('posts.view');
-Route::resource('posts', 'PostController');
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('posts', 'PostController');
+    Route::resource('categories', 'CategoryController');
+});

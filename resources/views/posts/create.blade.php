@@ -6,7 +6,7 @@
 
     <h1 class="pt-3">Création d'un article</h1>
 
-    <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
 
@@ -16,6 +16,17 @@
                    class="form-control" name="title" id="title" placeholder="Titre de l'article"
                    value="{{ old('title') }}">
             @error('title') <small id="title" class="form-text text-danger">{{$message}}</small> @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="categories">Catégories</label>
+            <select class="form-control" name="categories[]" id="categories">
+
+                @foreach($categories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                
+            </select>
         </div>
 
         <div class="form-group">

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -89,6 +90,9 @@ class Post extends Model
     }
 
 
+    /**
+     * @return BelongsToMany
+     */
     public function categories()
     {
         return $this->belongsToMany(Category::class);
