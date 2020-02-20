@@ -18,9 +18,8 @@ class ImageService
     public function handleUploadImage($image, $post = null)
     {
         if (!is_null($image)) {
-
-            Image::make($image)->resize(450, 230)->save('storage/images/thumbs/' . $image->hashName());
-            Image::make($image)->resize(1280, 720)->save('storage/images/' . $image->hashName());
+            Image::make($image)->resize(450, 230)->save(storage_path('app/public/images/thumbs/'. $image->hashName() ));
+            Image::make($image)->resize(1280, 720)->save(storage_path('app/public/images/' . $image->hashName()));
 
         }
     }

@@ -51,11 +51,10 @@ class AdminPostTest extends TestCase
      */
     public function posts_created(): void
     {
-        Storage::fake('public');
-
         $file = UploadedFile::fake()->image('image.jpg');
-        $categorie = factory(Category::class)->create();
+        $categorie = factory(Category::class, 4)->create();
 
+        $this->withoutExceptionHandling();
         $this->loginWithFakeUser();
 
         $response = $this->post('admin/posts', [
@@ -64,14 +63,18 @@ class AdminPostTest extends TestCase
             'image' => $file,
             'categories' => $categorie
         ]);
-
         $post = Post::all();
+
         $response->assertRedirect(route('admin.posts.show', $post->first()->id));
         $this->assertCount(1, $post);
+        $this->assertCount(4, $post->first()->categories);
         $this->assertInstanceOf(Carbon::class, $post->first()->created_at);
         $this->assertInstanceOf(Carbon::class, $post->first()->updated_at);
-        Storage::disk('public')->assertExists('images/' . $file->hashName());
-        Storage::disk('public')->assertMissing('failling.jpg');
+
+        $this->assertFileExists(storage_path('app/public/images/' . $file->hashName()));
+        $this->assertFileExists(storage_path('app/public/images/thumbs/' . $file->hashName()));
+
+        $this->deleteImageTest(Post::first());
     }
 
     /**
@@ -82,6 +85,7 @@ class AdminPostTest extends TestCase
         $this->loginWithFakeUser();
 
         $file = UploadedFile::fake()->image('image.jpg');
+        $categories =  factory(Category::class)->create();
         $title = $this->faker->unique()->sentence;
         $content = $this->faker->paragraph();
 
@@ -90,7 +94,8 @@ class AdminPostTest extends TestCase
             'slug' => Str::slug($title),
             'content' => $content,
             'excerpt' => Str::words($content, 50),
-            'image' => $file
+            'image' => $file,
+            'categories' => $categories
         ]);
         $response->assertSessionHasErrors('title');
     }
@@ -120,8 +125,7 @@ class AdminPostTest extends TestCase
         $post = Post::first();
 
         $this->assertEquals(Str::slug($slug), $post->slug);
-        Storage::disk('public')->assertExists('images/' . $file->hashName());
-        Storage::disk('public')->assertMissing('failling.jpg');
+        $this->deleteImageTest($post);
 
     }
 
@@ -149,8 +153,7 @@ class AdminPostTest extends TestCase
         $post = Post::first();
 
         $this->assertEquals($excerpt, $post->excerpt);
-        Storage::disk('public')->assertExists('images/' . $file->hashName());
-        Storage::disk('public')->assertMissing('failling.jpg');
+        $this->deleteImageTest($post);
 
     }
 
@@ -238,18 +241,16 @@ class AdminPostTest extends TestCase
         $response->assertRedirect(route('admin.posts.show', $oldPost->id));
 
         $this->assertEquals('New title', Post::first()->title);
-        Storage::disk('public')->assertExists('images/' . $newFile->hashName());
-        Storage::disk('public')->assertExists('images/' . Post::first()->image);
-        Storage::disk('public')->assertMissing('failling.jpg');
+        $this->assertFileExists(storage_path('app/public/images/' . $newFile->hashName()));
+        $this->assertFileExists(storage_path('app/public/images/' . Post::first()->image));
 
+        $this->deleteImageTest(Post::first());
 
     }
 
     /** @test */
     public function posts_delete()
     {
-        Storage::fake('public');
-
         $file = UploadedFile::fake()->image('image.jpg');
         $categorie = factory(Category::class)->create();
 
@@ -269,9 +270,17 @@ class AdminPostTest extends TestCase
 
         $oldPost = Post::first();
 
+        $this->assertFileExists(storage_path('app/public/images/' . $file->hashName()));
+        $this->assertFileExists(storage_path('app/public/images/thumbs/' . $file->hashName()));
+
         $response = $this->delete(route('admin.posts.destroy', $oldPost->id));
+        $this->assertFileNotExists(storage_path('app/public/images/' . $file->hashName()));
+        $this->assertFileNotExists(storage_path('app/public/images/thumbs/' . $file->hashName()));
+
         $response->assertRedirect(route('admin.posts.index'));
         $this->assertCount(0, Post::all());
+
+
 
 
     }
@@ -299,6 +308,8 @@ class AdminPostTest extends TestCase
 
         $this->assertCount(1, User::all());
         $this->assertEquals($user->id, $post->user_id);
+
+        $this->deleteImageTest($post);
 
 
     }

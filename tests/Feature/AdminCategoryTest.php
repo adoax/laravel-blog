@@ -76,14 +76,13 @@ class AdminCategoryTest extends TestCase
         ]);
 
         $response = $this->followingRedirects()
-        ->from(route('admin.categories.create'))
-        ->post(route('admin.categories.store'), [
-            'name' => 'Aventure'
-        ])
-
-        ->assertSee(__('validation.unique', [
-            'attribute' => __('validation.attributes.name')
-        ]));
+            ->from(route('admin.categories.create'))
+            ->post(route('admin.categories.store'), [
+                'name' => 'Aventure'
+            ])
+            ->assertSee(__('validation.unique', [
+                'attribute' => __('validation.attributes.name')
+            ]));
 
     }
 
@@ -115,7 +114,7 @@ class AdminCategoryTest extends TestCase
         $categories = Category::all();
         $this->assertCount(1, Category::all());
 
-        $this->delete(route('admin.categories.destroy',Category::first()));
+        $this->delete(route('admin.categories.destroy', Category::first()));
 
         $this->assertCount(0, Category::all());
     }
@@ -123,9 +122,7 @@ class AdminCategoryTest extends TestCase
     /** @test */
     public function delete_category_link_posts_fail()
     {
-        Storage::fake('public');
-
-        $file = UploadedFile::fake()->create('image.jpg');
+        $file = UploadedFile::fake()->image('image.jpg');
 
         $this->loginWithFakeUser();
 
@@ -144,11 +141,14 @@ class AdminCategoryTest extends TestCase
             'image' => $file
         ]);
 
-        Storage::disk('public')->assertExists('images/' . $file->hashName());
         $this->assertCount(1, Post::all());
         $this->assertCount(1, Post::first()->categories);
 
+        $this->deleteImageTest(Post::first());
+
         $this->delete(route('admin.categories.destroy', Category::first()));
+
+        $this->assertCount(0, Category::all());
 
     }
 }
