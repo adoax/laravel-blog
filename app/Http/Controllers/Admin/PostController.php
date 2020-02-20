@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Post;
+use App\Services\ImageService;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -14,19 +15,14 @@ use Illuminate\View\View;
 
 class PostController extends Controller
 {
+    private $imageUploadService;
 
-    public function __construct()
+    public function __construct(ImageService $imageUploadService)
     {
         $this->middleware('auth');
+        $this->imageUploadService = $imageUploadService;
     }
 
-    /**
-     * @return Factory|View
-     */
-    public function viewAll()
-    {
-        return view('posts.view', ['posts' => Post::all()]);
-    }
 
     /**
      * Display a listing of the resource.
@@ -35,7 +31,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index', ['posts' => Post::all()]);
+        return view('admin.posts.index', ['posts' => Post::all()]);
     }
 
     /**
@@ -45,7 +41,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create', ['categories' => Category::all()]);
+        return view('admin.posts.create', ['categories' => Category::all()]);
     }
 
     /**
@@ -56,12 +52,9 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $file = $request->file('image');
-
-        if ($file->store('images', 'public')) {
-            $post = Post::create($request->all());
-            $post->categories()->attach($request->categories);
-        }
+        $this->imageUploadService->handleUploadImage($request->file('image'));
+        $post = Post::create($request->all());
+        $post->categories()->attach($request->categories);
 
         return redirect()->route('admin.posts.show', $post->id)->with('status', 'Vous avez créer un article');
     }
@@ -74,7 +67,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -88,7 +81,7 @@ class PostController extends Controller
         $categories = Category::all();
 
 
-        return view('posts.edit', compact('post', 'categories'));
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -100,22 +93,11 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        if ($request->image) {
-            $file = $request->file('image');
+        $this->imageUploadService->handleUploadImage($request->file('image'), $post);
+        $this->imageUploadService->handleDeleteImage($post);
 
-            if ($file->store('images', 'public')) {
-                Storage::delete('public/images/' . $post->image);
-                $post->update($request->all());
-                $post->categories()->sync($post->categories);
-            }
-        }
-
-        if (!$request->image) {
-            $post->update($request->all());
-            $post->categories()->sync($post->categories);
-
-        }
-
+        $post->update($request->all());
+        $post->categories()->sync($request->categories);
 
         return redirect()->route('admin.posts.show', $post->id);
     }
@@ -130,7 +112,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
 
-        Storage::delete('public/images/' . $post->image);
+        $this->imageUploadService->handleDeleteImage($post);
         $post->delete();
 
         return redirect()->route('admin.posts.index');

@@ -1,33 +1,23 @@
 @extends('layouts.app')
 
+{{--<div class="background-img-top"></div>--}}
+
 @section('content')
-
-    <a href="{{ route('admin.posts.create') }}" class="btn btn-success mb-3 float-right">Créer un article</a>
-    <table class="table table-striped">
-        <thead class="thead-inverse">
-        <tr>
-            <th>Titre</th>
-            <th>Extrait</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
+    <div class="row">
         @foreach($posts as $post)
-        <tr>
-            <td>{{ $post->title }}</td>
-            <td>{{ $post->excerpt }}</td>
-            <td class="row">
-                <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-success">Voir</a>
-                <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">Editer</a>
-                <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Supprimer</button>
-                </form>
-            </td>
-        </tr>
-            @endforeach
-        </tbody>
-    </table>
-
+            <div class="col-6">
+                <div class="card">
+                    <a href="{{ route('posts.show', $post->id) }}">
+                        <img class="card-img-top" src="{{asset('storage/images/thumbs/' . $post->image)}}" alt="">
+                    </a>
+                    <div class="card-body">
+                        <a href="{{ route('posts.show', $post->id) }}" class="link-url-card">
+                            <h2 class="card-title">{{$post->title}}</h2>
+                        </a>
+                        <p class="card-text">{{$post->excerpt}}</p>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
 @endsection
