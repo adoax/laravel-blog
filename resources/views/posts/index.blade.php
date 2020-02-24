@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         @foreach($posts as $post)
-            <div class="col-6">
+            <div class="col-6 pt-3">
                 <div class="card">
                     <a href="{{ route('posts.show', $post->id) }}">
                         <img class="card-img-top" src="{{asset('storage/images/thumbs/' . $post->image)}}" alt="">

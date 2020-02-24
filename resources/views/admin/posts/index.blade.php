@@ -3,6 +3,7 @@
 @section('content')
 
     <a href="{{ route('admin.posts.create') }}" class="btn btn-success mb-3 float-right">Créer un article</a>
+    {{Auth::user()->roles->pluck('name')->implode(', ')}}
     <table class="table table-striped">
         <thead class="thead-inverse">
         <tr>

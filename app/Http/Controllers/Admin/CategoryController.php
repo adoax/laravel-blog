@@ -22,11 +22,13 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return Factory|View
      */
     public function index()
     {
-
+        $categories = Category::all();
+        $categories->load('posts');
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -77,7 +79,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param CategoryRequest $request
      * @param Category $category
      * @return RedirectResponse
      */
@@ -97,6 +99,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $this->authorize('delete', $category);
         $category->delete();
 
         return redirect()->route('admin.categories.index')->with('status', 'Categorie bien supprimer');

@@ -77,6 +77,35 @@ class AdminPostTest extends TestCase
         $this->deleteImageTest(Post::first());
     }
 
+    /** @test */
+    public function post_author_automatically_added()
+    {
+        Storage::fake('public');
+
+        $file = UploadedFile::fake()->image('image.jpg');
+
+        $categorie = factory(Category::class)->create();
+
+        $this->loginWithFakeUser();
+
+        $response = $this->post('admin/posts', [
+            'title' => $this->faker->unique()->sentence,
+            'content' => $this->faker->paragraph(),
+            'image' => $file,
+            'categories' => $categorie
+        ]);
+
+        $post = Post::first();
+        $user = User::first();
+
+        $this->assertCount(1, User::all());
+        $this->assertEquals($user->id, $post->user_id);
+
+        $this->deleteImageTest($post);
+
+
+    }
+
     /**
      * @test
      */
@@ -101,7 +130,7 @@ class AdminPostTest extends TestCase
     }
 
     /** @test */
-    public function posts_generate_edit_slug()
+    public function posts_created_with_slug()
     {
         Storage::fake('public');
 
@@ -130,7 +159,7 @@ class AdminPostTest extends TestCase
     }
 
     /** @test */
-    public function posts_generate_edit_excerpt()
+    public function posts_created_with_excerpt()
     {
         Storage::fake('public');
 
@@ -248,6 +277,49 @@ class AdminPostTest extends TestCase
 
     }
 
+    public function posts_edit_bad_user(): void
+    {
+        Storage::fake('public');
+
+        $file = UploadedFile::fake()->image('image.jpg');
+        $categorie = factory(Category::class)->create();
+
+        $this->loginWithFakeUser();
+
+        $title = $this->faker->unique()->sentence;
+        $content = $this->faker->paragraph();
+
+        $this->post('admin/posts', [
+            'title' => $title,
+            'slug' => Str::slug($title),
+            'content' => $content,
+            'excerpt' => Str::words($content, 50),
+            'image' => $file,
+            'categories' => $categorie
+        ]);
+
+        $oldPost = Post::first();
+
+        $this->loginWithFakeUser();
+        $newFile = UploadedFile::fake()->image('newImage.jpg');
+        $response = $this->put('admin/posts/' . $oldPost->id, [
+            'title' => 'New title',
+            'slug' => $oldPost->slug,
+            'content' => $oldPost->content,
+            'excerpt' => $oldPost->excerpt,
+            'image' => $newFile,
+            'categories' => $categorie
+        ]);
+
+        $response->assertSee('Vous avez pas le droit ! ');
+
+        $this->assertFileExists(storage_path('app/public/images/' . $newFile->hashName()));
+        $this->assertFileExists(storage_path('app/public/images/' . Post::first()->image));
+
+        $this->deleteImageTest(Post::first());
+
+    }
+
     /** @test */
     public function posts_delete()
     {
@@ -283,34 +355,46 @@ class AdminPostTest extends TestCase
 
 
 
+
     }
 
     /** @test */
-    public function post_author_automatically_added()
+    public function posts_delete_bad_user()
     {
-        Storage::fake('public');
-
         $file = UploadedFile::fake()->image('image.jpg');
-
         $categorie = factory(Category::class)->create();
 
         $this->loginWithFakeUser();
 
-        $response = $this->post('admin/posts', [
-            'title' => $this->faker->unique()->sentence,
-            'content' => $this->faker->paragraph(),
+        $title = $this->faker->unique()->sentence;
+        $content = $this->faker->paragraph;
+
+        $this->post('admin/posts', [
+            'title' => $title,
+            'slug' => Str::slug($title),
+            'content' => $content,
+            'excerpt' => Str::words($content, 50),
             'image' => $file,
             'categories' => $categorie
         ]);
 
-        $post = Post::first();
-        $user = User::first();
+        $oldPost = Post::first();
 
-        $this->assertCount(1, User::all());
-        $this->assertEquals($user->id, $post->user_id);
+        $this->assertFileExists(storage_path('app/public/images/' . $file->hashName()));
+        $this->assertFileExists(storage_path('app/public/images/thumbs/' . $file->hashName()));
 
-        $this->deleteImageTest($post);
+        $this->loginWithFakeUser();
+        $response = $this->delete(route('admin.posts.destroy', $oldPost->id));
+        $response->assertSee('Vous avez pas le droit !');
 
+        $this->assertFileExists(storage_path('app/public/images/' . $file->hashName()));
+        $this->assertFileExists(storage_path('app/public/images/thumbs/' . $file->hashName()));
+
+        $this->deleteImageTest($oldPost);
 
     }
+
+
+
+
 }

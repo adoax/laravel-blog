@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="bec20584-a340-4053-bfee-768cd63b1593" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Comment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/CategoryPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/PostPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Role.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_21_114313_create_roles_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_21_134243_create_role_user_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_02_24_133540_create_comments_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/errors/403.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/debugbar/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-blog.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/ImageService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/ImageService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_14_122155_create_category_post_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_14_122155_create_category_post_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/posts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/posts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/posts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/posts/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/AdminCategoryTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/AdminCategoryTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/AdminPostTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/AdminPostTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +44,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -120,6 +147,8 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/intervention/imagecache" />
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
     </include_path>
   </component>
   <component name="ProjectId" id="1XQhq6IcyChvh6FPNPvz1JbhJiZ" />
@@ -128,7 +157,6 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -136,7 +164,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/posts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -144,9 +172,16 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Colors" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\views\admin\categories" />
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\views\posts" />
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\sass" />
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\js" />
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\lang" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\image" />
       <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources" />
@@ -154,29 +189,22 @@
       <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\app\Http\Controllers\Admin" />
       <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\js" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\views\posts" />
-      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\views\admin\categories" />
-      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\sass" />
-      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\js" />
-      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\lang" />
-    </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.tests">
+  <component name="RunManager" selected="PHPUnit.AdminPostTest.posts_delete_bad_user">
+    <configuration name="AdminCategoryTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\AdminCategoryTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AdminCategoryTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
     <configuration name="AdminCategoryTest.delete_category_link_posts_fail" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\AdminCategoryTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AdminCategoryTest.php" method="delete_category_link_posts_fail" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="AdminPostTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\AdminPostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AdminPostTest.php" scope="Class" />
+    <configuration name="AdminCategoryTest.delete_category_success" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\AdminCategoryTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AdminCategoryTest.php" method="delete_category_success" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="AdminPostTest.posts_edit" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\AdminPostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AdminPostTest.php" method="posts_edit" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AdminPostTest.posts_errors_image" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\AdminPostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AdminPostTest.php" method="posts_errors_image" scope="Method" />
+    <configuration name="AdminPostTest.posts_delete_bad_user" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\AdminPostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AdminPostTest.php" method="posts_delete_bad_user" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -189,11 +217,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.AdminPostTest.posts_delete_bad_user" />
         <item itemvalue="PHPUnit.tests" />
         <item itemvalue="PHPUnit.AdminCategoryTest.delete_category_link_posts_fail" />
-        <item itemvalue="PHPUnit.AdminPostTest" />
-        <item itemvalue="PHPUnit.AdminPostTest.posts_edit" />
-        <item itemvalue="PHPUnit.AdminPostTest.posts_errors_image" />
+        <item itemvalue="PHPUnit.AdminCategoryTest.delete_category_success" />
+        <item itemvalue="PHPUnit.AdminCategoryTest" />
       </list>
     </recent_temporary>
   </component>
@@ -220,12 +248,27 @@
       <workItem from="1582099985334" duration="16838000" />
       <workItem from="1582121760495" duration="350000" />
       <workItem from="1582122136346" duration="11779000" />
-      <workItem from="1582187749086" duration="18713000" />
+      <workItem from="1582187749086" duration="23122000" />
+      <workItem from="1582273788874" duration="8694000" />
+      <workItem from="1582535607620" duration="5442000" />
+      <workItem from="1582541131917" duration="6483000" />
+      <workItem from="1582553114758" duration="1490000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -235,6 +278,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="547" y="175" key="#CLI_Interpreters/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1581432520401" />
+    <state x="703" y="231" key="#Notifications" timestamp="1582535629999">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="703" y="231" key="#Notifications/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582535629999" />
     <state x="674" y="111" key="#PHP" timestamp="1581432531604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -283,26 +330,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582036299294" />
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582211875186">
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582289167756">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582211875186" />
-    <state width="1877" height="273" key="GridCell.Tab.0.bottom" timestamp="1582213004155">
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582289167756" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1582547686829">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="273" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582213004155" />
-    <state width="1877" height="273" key="GridCell.Tab.0.center" timestamp="1582213004155">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582547686829" />
+    <state width="1877" height="346" key="GridCell.Tab.0.bottom" timestamp="1582552806339">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="273" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582213004155" />
-    <state width="1877" height="273" key="GridCell.Tab.0.left" timestamp="1582213004155">
+    <state width="1877" height="346" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582552806339" />
+    <state width="1877" height="346" key="GridCell.Tab.0.center" timestamp="1582552806339">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="273" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582213004155" />
-    <state width="1877" height="273" key="GridCell.Tab.0.right" timestamp="1582213004155">
+    <state width="1877" height="346" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582552806339" />
+    <state width="1877" height="346" key="GridCell.Tab.0.left" timestamp="1582552806339">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="273" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582213004155" />
+    <state width="1877" height="346" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582552806339" />
+    <state width="1877" height="346" key="GridCell.Tab.0.right" timestamp="1582552806339">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="346" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582552806339" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1581702208347">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -319,22 +370,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1581702208347" />
+    <state x="540" y="263" key="IDE.errors.dialog" timestamp="1582554735659">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="263" key="IDE.errors.dialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582554735659" />
     <state x="667" y="335" key="NewPhpClassDialog" timestamp="1582193557001">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="335" key="NewPhpClassDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582193557001" />
-    <state x="562" y="119" key="SettingsEditor" timestamp="1582193505217">
+    <state x="562" y="119" key="SettingsEditor" timestamp="1582553082532">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="562" y="119" key="SettingsEditor/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582193505217" />
+    <state x="562" y="119" key="SettingsEditor/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582553082532" />
     <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1581527342359">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1581527342359" />
-    <state x="855" y="269" width="762" height="669" key="dock-window-1" timestamp="1582125160758">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1920" y="65" width="1586" height="653" maximized="true" key="dock-window-1" timestamp="1582553409979">
+      <screen x="1920" y="0" width="1600" height="860" />
     </state>
-    <state x="855" y="269" width="762" height="669" key="dock-window-1/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582125160758" />
+    <state x="1920" y="65" width="1586" height="653" maximized="true" key="dock-window-1/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582553409979" />
     <state x="656" y="252" width="607" height="536" key="find.popup" timestamp="1581613057457">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

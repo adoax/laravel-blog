@@ -31,7 +31,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('admin.posts.index', ['posts' => Post::all()]);
+        $posts = Post::where('user_id', auth()->id())->orderBy('id', 'desc')->get();
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -75,9 +76,11 @@ class PostController extends Controller
      *
      * @param Post $post
      * @return Factory|View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(Post $post)
     {
+        $this->authorize('update', $post);
         $categories = Category::all();
 
 
@@ -90,9 +93,12 @@ class PostController extends Controller
      * @param PostRequest $request
      * @param Post $post
      * @return RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(PostRequest $request, Post $post)
     {
+        $this->authorize('update', $post);
+
         $this->imageUploadService->handleUploadImage($request->file('image'), $post);
         $this->imageUploadService->handleDeleteImage($post);
 
@@ -111,7 +117,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-
+        $this->authorize('delete', $post);
         $this->imageUploadService->handleDeleteImage($post);
         $post->delete();
 

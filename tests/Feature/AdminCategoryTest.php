@@ -108,6 +108,7 @@ class AdminCategoryTest extends TestCase
     public function delete_category_success()
     {
         $this->loginWithFakeUser();
+
         $this->post(route('admin.categories.store'), [
             'name' => 'Aventure'
         ]);
@@ -137,18 +138,19 @@ class AdminCategoryTest extends TestCase
             'title' => 'coucuo je sus un test',
             'content' => 'Je suis le contenue de l\'article',
             'excerpt' => 'Je suis une court presentation du cotnenue',
-            'categories' => $category,
+            'categories' => 1,
             'image' => $file
         ]);
+        $post = Post::first();
 
         $this->assertCount(1, Post::all());
-        $this->assertCount(1, Post::first()->categories);
+        $this->assertCount(1,$post->categories);
 
-        $this->deleteImageTest(Post::first());
+        $this->deleteImageTest($post);
 
-        $this->delete(route('admin.categories.destroy', Category::first()));
-
-        $this->assertCount(0, Category::all());
+        $response = $this->delete(route('admin.categories.destroy', $category));
+        $response->assertSee('Vous ne pouvez pas supprimez cette category');
+        $this->assertCount(1, Category::all());
 
     }
 }
