@@ -11,12 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bec20584-a340-4053-bfee-768cd63b1593" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/phpstan.neon.dist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-blog.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,6 +130,12 @@
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
       <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/larastan" />
+      <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
+      <path value="$PROJECT_DIR$/vendor/seld/phar-utils" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
     </include_path>
   </component>
   <component name="ProjectId" id="1XQhq6IcyChvh6FPNPvz1JbhJiZ" />
@@ -153,7 +159,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -235,7 +241,8 @@
       <workItem from="1582541131917" duration="6483000" />
       <workItem from="1582553114758" duration="10512000" />
       <workItem from="1582619535183" duration="2316000" />
-      <workItem from="1582622179343" duration="9873000" />
+      <workItem from="1582622179343" duration="10735000" />
+      <workItem from="1582643519536" duration="621000" />
     </task>
     <servers />
   </component>
@@ -301,6 +308,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1581584674965" />
+    <state x="708" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582643082820">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="708" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582643082820" />
     <state x="640" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1582621980322">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -317,26 +328,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582640251890" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1582547686829">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1582643448440">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582547686829" />
-    <state width="1877" height="355" key="GridCell.Tab.0.bottom" timestamp="1582626503291">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582643448440" />
+    <state width="1877" height="355" key="GridCell.Tab.0.bottom" timestamp="1582643482272">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="355" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582626503291" />
-    <state width="1877" height="355" key="GridCell.Tab.0.center" timestamp="1582626503291">
+    <state width="1877" height="355" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582643482272" />
+    <state width="1877" height="355" key="GridCell.Tab.0.center" timestamp="1582643482271">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="355" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582626503291" />
-    <state width="1877" height="355" key="GridCell.Tab.0.left" timestamp="1582626503291">
+    <state width="1877" height="355" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582643482271" />
+    <state width="1877" height="355" key="GridCell.Tab.0.left" timestamp="1582643482271">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="355" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582626503291" />
-    <state width="1877" height="355" key="GridCell.Tab.0.right" timestamp="1582626503291">
+    <state width="1877" height="355" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582643482271" />
+    <state width="1877" height="355" key="GridCell.Tab.0.right" timestamp="1582643482272">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="355" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582626503291" />
+    <state width="1877" height="355" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582643482272" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1581702208347">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -361,10 +372,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="335" key="NewPhpClassDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582193557001" />
-    <state x="562" y="119" key="SettingsEditor" timestamp="1582553082532">
+    <state x="398" y="269" key="SettingsEditor" timestamp="1582643478430">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="562" y="119" key="SettingsEditor/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582553082532" />
+    <state x="398" y="269" key="SettingsEditor/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582643478430" />
     <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1581527342359">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
