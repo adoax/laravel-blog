@@ -385,7 +385,7 @@ class AdminPostTest extends TestCase
 
         $this->loginWithFakeUser();
         $response = $this->delete(route('admin.posts.destroy', $oldPost->id));
-        $response->assertSee('Vous avez pas le droit !');
+        $response->assertStatus(403);
 
         $this->assertFileExists(storage_path('app/public/images/' . $file->hashName()));
         $this->assertFileExists(storage_path('app/public/images/thumbs/' . $file->hashName()));

@@ -119,6 +119,8 @@ class PostController extends Controller
     {
         $this->authorize('delete', $post);
         $this->imageUploadService->handleDeleteImage($post);
+
+        $post->comments()->delete();
         $post->delete();
 
         return redirect()->route('admin.posts.index');

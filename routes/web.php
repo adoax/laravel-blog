@@ -22,9 +22,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes(['verify' => true]);
 
+
 Route::resource('posts', 'PostController')->only([
     'index', 'show'
 ]);
+
+Route::resource('comments', 'CommentController');
+
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('posts', 'PostController');

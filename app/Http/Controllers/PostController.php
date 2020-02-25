@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Comment;
 use App\Post;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\View\View;
@@ -27,6 +28,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+        $comments = Comment::where('post_id', $post->id)->orderBy('id', 'desc')->get();
+
+        return view('posts.show', compact('post', 'comments'));
     }
 }
