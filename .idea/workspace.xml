@@ -11,8 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bec20584-a340-4053-bfee-768cd63b1593" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/posts/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/posts/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,19 +156,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\views\admin\categories" />
-      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\views\posts" />
-      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\sass" />
-      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\js" />
-      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\lang" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\image" />
       <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources" />
       <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\views\admin" />
       <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\app\Http\Controllers\Admin" />
       <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\views\admin\categories" />
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\views\posts" />
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\sass" />
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\js" />
+      <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\lang" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.AdminPostTest.posts_delete_bad_user">
@@ -231,7 +235,7 @@
       <workItem from="1582541131917" duration="6483000" />
       <workItem from="1582553114758" duration="10512000" />
       <workItem from="1582619535183" duration="2316000" />
-      <workItem from="1582622179343" duration="5128000" />
+      <workItem from="1582622179343" duration="9873000" />
     </task>
     <servers />
   </component>
@@ -309,10 +313,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582036299294" />
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582624636387">
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582640251890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582624636387" />
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582640251890" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1582547686829">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

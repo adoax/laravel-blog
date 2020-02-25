@@ -33,4 +33,5 @@ Route::resource('comments', 'CommentController');
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('posts', 'PostController');
     Route::resource('categories', 'CategoryController');
+    Route::resource('', 'AdminController');
 });
