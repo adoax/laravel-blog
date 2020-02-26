@@ -149,7 +149,7 @@ class AdminCategoryTest extends TestCase
         $this->deleteImageTest($post);
 
         $response = $this->delete(route('admin.categories.destroy', $category));
-        $response->assertSee('Vous ne pouvez pas supprimez cette category');
+        $response->assertStatus(403);
         $this->assertCount(1, Category::all());
 
     }

@@ -7,10 +7,14 @@ parameters:
         - app
 
     # The level 8 is the highest level
-    level: 5
+    level: 8
 
     ignoreErrors:
         - '#Unsafe usage of new static#'
+        - '#Call to an undefined method Symfony\\Component\\HttpFoundation\\File\\UploadedFile::hashName()#'
+        - '#Method App\\Http\\Middleware\\Authenticate::redirectTo() should return string|null but return statement is missing#'
+        - '#Parameter 1 $image of method App\\Services\\ImageService::handleUploadImage() expects Symfony\\Component\\HttpFoundation\\File\\UploadedFile, array<Illuminate\\Http\\UploadedFile>|Illuminate\\Http\\UploadedFile|null given#'
+        - '#Cannot access property \$roles on App\\User#'
 
     excludes_analyse:
         - ./*/*/FileToBeExcluded.php

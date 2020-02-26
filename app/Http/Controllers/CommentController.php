@@ -18,26 +18,6 @@ class CommentController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param CommentRequest $request
@@ -52,28 +32,6 @@ class CommentController extends Controller
         ]);
 
         return redirect()->route('posts.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Comment $comment
-     * @return Response
-     */
-    public function show(Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Comment $comment
-     * @return Response
-     */
-    public function edit(Comment $comment)
-    {
-        //
     }
 
     /**

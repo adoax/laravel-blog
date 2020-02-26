@@ -8,9 +8,16 @@ use Illuminate\Support\Str;
 
 class Category extends Model
 {
+    /**
+     * @var string[]
+     */
     protected $fillable = ['name', 'slug'];
 
-    public function setNameAttribute($atr)
+    /**
+     * @param string $atr
+     * @return void
+     */
+    public function setNameAttribute(string $atr)
     {
         $this->attributes['name'] = $atr;
         $this->attributes['slug'] = Str::slug($atr);

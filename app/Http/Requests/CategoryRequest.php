@@ -24,16 +24,8 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        $validate = [
-            'name' => ['required']
+        return [
+            'name' => ['required', Rule::unique('categories')->ignore($this->category)]
         ];
-
-        if ($this->getMethod() === 'PUT') {
-            return array_merge_recursive($validate, ['name' => [Rule::unique('categories')->ignore($this->category->id)]]);
-        };
-
-        if ($this->getMethod() === "POST" || 'PATCH') {
-            return array_merge_recursive($validate, ['name' => ['unique:categories']]);
-        };
     }
 }

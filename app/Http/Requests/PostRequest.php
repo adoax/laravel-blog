@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PostRequest extends FormRequest
 {
@@ -25,21 +26,18 @@ class PostRequest extends FormRequest
     {
 
         $validate = [
-            'title' => ['required'],
+            'title' => ['required', Rule::unique('posts')->ignore($this->post)],
             'content' => ['required'],
             'categories' => ['required']
         ];
 
-        if ($this->getMethod() === "PUT") {
-            return $validate;
-        }
-
         if ($this->getMethod() === 'POST') {
-            return array_merge($validate, [
+            $validate = array_merge($validate, [
                 'image' => 'required'
             ]);
         }
 
+        return $validate;
 
     }
 }

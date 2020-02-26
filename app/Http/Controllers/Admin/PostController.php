@@ -8,6 +8,7 @@ use App\Http\Requests\PostRequest;
 use App\Post;
 use App\Services\ImageService;
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
@@ -15,6 +16,9 @@ use Illuminate\View\View;
 
 class PostController extends Controller
 {
+    /**
+     * @var ImageService
+     */
     private $imageUploadService;
 
     public function __construct(ImageService $imageUploadService)
@@ -76,7 +80,7 @@ class PostController extends Controller
      *
      * @param Post $post
      * @return Factory|View
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
      */
     public function edit(Post $post)
     {
@@ -93,14 +97,13 @@ class PostController extends Controller
      * @param PostRequest $request
      * @param Post $post
      * @return RedirectResponse
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
      */
     public function update(PostRequest $request, Post $post)
     {
         $this->authorize('update', $post);
 
         $this->imageUploadService->handleUploadImage($request->file('image'), $post);
-        $this->imageUploadService->handleDeleteImage($post);
 
         $post->update($request->all());
         $post->categories()->sync($request->categories);

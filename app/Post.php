@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -12,7 +14,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class Post extends Model
 {
     /**
-     *Permet de definir le créateur automatiquement
+     * Permet de definir le créateur automatiquement
+     * @return void
      */
     public static function boot()
     {
@@ -20,16 +23,20 @@ class Post extends Model
 
         if (auth()->user()) {
             static::creating(function ($model) {
-                $model->user_id = auth()->user()->id;
+                $model->user_id = Auth::id();
             });
         }
     }
 
+    /**
+     * @var string[]
+     */
     protected $fillable = ['title', 'slug', 'content', 'excerpt', 'image', 'user_id'];
 
     /**
      * Permets de générer un slug automatiquement à partir du titre, si le slug n'est pas renseigné.
-     * @param $atr
+     * @param string $atr
+     * @return void
      */
     public function setTitleAttribute($atr)
     {
@@ -39,7 +46,8 @@ class Post extends Model
 
     /**
      * Permet de générer le slug à partir de la valeur renseignée
-     * @param $atr
+     * @param string $atr
+     * @return void
      */
     public function setSlugAttribute($atr)
     {
@@ -48,7 +56,8 @@ class Post extends Model
 
     /**
      * Permets de générer m'extrait à partir du contenir, si l'extrait n'est pas renseigné
-     * @param $atr
+     * @param string $atr
+     * @return void
      */
     public function setContentAttribute($atr)
     {
@@ -58,7 +67,8 @@ class Post extends Model
 
     /**
      * Permet de générer l'extrait a partir donné valeur renseigner
-     * @param $atr
+     * @param string $atr
+     * @return void
      */
     public function setExcerptAttribute($atr)
     {
@@ -66,6 +76,11 @@ class Post extends Model
 
     }
 
+    /**
+     * Permet de definir le nom de l'image
+     * @param UploadedFile|null $atr
+     * @return void
+     */
     public function setImageAttribute($atr)
     {
 
@@ -98,6 +113,9 @@ class Post extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    /**
+     * @return HasMany
+     */
     public function comments()
     {
         return $this->hasMany(Comment::class);
