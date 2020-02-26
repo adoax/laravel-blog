@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Storage;
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
-
     /**
      * Permet de Authentifier un faux utilisateur
      */

@@ -27,8 +27,10 @@ class ImageService
                 Storage::delete('public/images/thumbs/' . $post->image);
 
             };
-            Image::make($image)->resize(450, 230)->save(storage_path('app/public/images/thumbs/' . $image->hashName()));
+            Storage::disk('public')->makeDirectory('images');
             Image::make($image)->resize(1280, 720)->save(storage_path('app/public/images/' . $image->hashName()));
+            Storage::disk('public')->makeDirectory('images/thumbs');
+            Image::make($image)->resize(450, 230)->save(storage_path('app/public/images/thumbs/' . $image->hashName()));
 
         }
     }

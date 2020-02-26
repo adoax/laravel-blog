@@ -11,8 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bec20584-a340-4053-bfee-768cd63b1593" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/kKjszAKd7O8BwFdUjD1d1TAi8iqmo4c6C91ZyZtY.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/ImageService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/ImageService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/app/public/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/AdminCategoryTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/AdminCategoryTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,21 +178,21 @@
       <recent name="D:\DEV\Project\PHP\FrameWork\Laravel\laravel-blog\resources\js" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.tests">
+  <component name="RunManager" selected="PHPUnit.AdminPostTest.posts_created">
     <configuration name="AdminCategoryTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\AdminCategoryTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AdminCategoryTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="AdminPostTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\AdminPostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AdminPostTest.php" scope="Class" />
+    <configuration name="AdminCategoryTest.created_category" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\AdminCategoryTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AdminCategoryTest.php" method="created_category" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="AdminPostTest.posts_delete_bad_user" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\AdminPostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AdminPostTest.php" method="posts_delete_bad_user" scope="Method" />
+    <configuration name="AdminCategoryTest.index_authorise" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\AdminCategoryTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AdminCategoryTest.php" method="index_authorise" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="CommentTest.comment_delete_with_deleted_posts" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\CommentTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/CommentTest.php" method="comment_delete_with_deleted_posts" scope="Method" />
+    <configuration name="AdminPostTest.posts_created" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\AdminPostTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AdminPostTest.php" method="posts_created" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -200,11 +205,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.AdminPostTest.posts_created" />
         <item itemvalue="PHPUnit.tests" />
+        <item itemvalue="PHPUnit.AdminCategoryTest.created_category" />
+        <item itemvalue="PHPUnit.AdminCategoryTest.index_authorise" />
         <item itemvalue="PHPUnit.AdminCategoryTest" />
-        <item itemvalue="PHPUnit.AdminPostTest.posts_delete_bad_user" />
-        <item itemvalue="PHPUnit.AdminPostTest" />
-        <item itemvalue="PHPUnit.CommentTest.comment_delete_with_deleted_posts" />
       </list>
     </recent_temporary>
   </component>
@@ -239,7 +244,7 @@
       <workItem from="1582619535183" duration="2316000" />
       <workItem from="1582622179343" duration="10735000" />
       <workItem from="1582643519536" duration="7963000" />
-      <workItem from="1582705360861" duration="13072000" />
+      <workItem from="1582705360861" duration="18762000" />
     </task>
     <servers />
   </component>
@@ -305,10 +310,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1581584674965" />
-    <state x="708" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582643082820">
+    <state x="708" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582738818516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="708" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582643082820" />
+    <state x="708" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582738818516" />
     <state x="640" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1582621980322">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -329,22 +334,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582705514203" />
-    <state width="1877" height="355" key="GridCell.Tab.0.bottom" timestamp="1582712389540">
+    <state width="1877" height="355" key="GridCell.Tab.0.bottom" timestamp="1582741163952">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="355" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582712389540" />
-    <state width="1877" height="355" key="GridCell.Tab.0.center" timestamp="1582712389539">
+    <state width="1877" height="355" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582741163952" />
+    <state width="1877" height="355" key="GridCell.Tab.0.center" timestamp="1582741163952">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="355" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582712389539" />
-    <state width="1877" height="355" key="GridCell.Tab.0.left" timestamp="1582712389539">
+    <state width="1877" height="355" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582741163952" />
+    <state width="1877" height="355" key="GridCell.Tab.0.left" timestamp="1582741163951">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="355" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582712389539" />
-    <state width="1877" height="355" key="GridCell.Tab.0.right" timestamp="1582712389540">
+    <state width="1877" height="355" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582741163951" />
+    <state width="1877" height="355" key="GridCell.Tab.0.right" timestamp="1582741163952">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="355" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582712389540" />
+    <state width="1877" height="355" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582741163952" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1581702208347">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -381,10 +386,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="514" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582624852210" />
-    <state x="631" y="213" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1582712013175">
+    <state x="631" y="213" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1582737535165">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="631" y="213" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582712013175" />
+    <state x="631" y="213" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582737535165" />
     <state x="2141" y="-21" width="1572" height="947" maximized="true" key="dock-window-1" timestamp="1582620895616">
       <screen x="1920" y="0" width="1600" height="860" />
     </state>
