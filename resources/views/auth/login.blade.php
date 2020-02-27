@@ -1,73 +1,62 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+    <div class="container pt-5">
+        <div class="row justify-content-center ">
+            <div class="col-md-6">
+                <div class="carousel-item active">
+                    <img src="./images/header.jpg" class="img-fluid" alt="Image de formulaire de connexions">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Commensez des maitenants</h3>
+                        <p class="text-white">Vous pouvez en créer en en quelque minute !</p>
+                        <div class="btn btn-success"><a href="{{route('register')}}" class="text-white">Enregistrer vous</a> </div>
+                    </div>
                 </div>
+            </div>
+            <div class="col-md-6">
+                <h3 class="text-center pt-2">Bienvenue !</h3>
+
+                <form action="{{route('login')}}" method="POST">
+                    @csrf
+                    <div class="form-group ">
+                        <label for="email">Adresse Mail</label>
+                        <input type="email"
+                               class="form-control ui-form-input  @error('email') is-invalid @enderror " name="email" id="email"
+                               placeholder="john@doe.fr" value="{{ old('email') }}">
+                        @error('email') <small id="helpId" class="form-text text-muted">{{ $message }}</small> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Votre mot de passe</label>
+                        <input type="password"
+                               class="form-control  ui-form-input @error('password') is-invalid @enderror"
+                               name="password" id="password" placeholder="*****">
+                        @error('password') <small id="helpId" class="form-text text-muted">{{ $message }}</small> @enderror
+                    </div>
+
+                    <div class="form-group row pt-3">
+                        <div class="col-6">
+
+                        <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input ui-form-check" name="remember" id="" value="checkedValue"
+                                {{ old('remember') ? 'checked' : '' }}>
+                            Se souvenir de moi
+                        </label>
+                    </div>
+                        </div>
+                        <div class="col-6">
+
+                            @if (Route::has('password.request'))
+                                <a href="{{ route('password.request') }}">
+                                    {{ __('Mot de passe oublié ?') }}
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-secondary btn-block mt-4">Se connecter</button>
+                </form>
             </div>
         </div>
     </div>
-</div>
 @endsection

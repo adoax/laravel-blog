@@ -110,12 +110,12 @@
   </component>
   <component name="PhpInterpreters">
     <interpreters>
-      <interpreter id="23fa9481-4e1f-461f-8e62-686855161269" name="PHP 7.3" home="D:\DEV\php\php.exe" debugger_id="php.debugger.XDebug" />
+      <interpreter id="23fa9481-4e1f-461f-8e62-686855161269" name="PHP 7.3 (project level)" home="D:\DEV\php\php.exe" debugger_id="php.debugger.XDebug" />
     </interpreters>
   </component>
   <component name="PhpInterpretersPhpInfoCache">
     <phpInfoCache>
-      <interpreter name="PHP 7.3">
+      <interpreter name="PHP 7.3 (project level)">
         <phpinfo binary_type="PHP" php_cgi="D:\DEV\php\php-cgi.exe" php_cli="D:\DEV\php\php.exe" path_separator=";" version="7.3.6">
           <additional_php_ini />
           <configuration_file>D:\DEV\php\php.ini</configuration_file>

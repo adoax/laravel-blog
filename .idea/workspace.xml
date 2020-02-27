@@ -11,13 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bec20584-a340-4053-bfee-768cd63b1593" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/kKjszAKd7O8BwFdUjD1d1TAi8iqmo4c6C91ZyZtY.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/ImageService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/ImageService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/AdminCategoryTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/AdminCategoryTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3 (project level)">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
@@ -152,7 +147,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Symfony/comparator_site" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laravel-ecommerce" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -244,7 +239,14 @@
       <workItem from="1582619535183" duration="2316000" />
       <workItem from="1582622179343" duration="10735000" />
       <workItem from="1582643519536" duration="7963000" />
-      <workItem from="1582705360861" duration="18762000" />
+      <workItem from="1582705360861" duration="19484000" />
+      <workItem from="1582793178928" duration="7585000" />
+      <workItem from="1582810247329" duration="2393000" />
+      <workItem from="1582885093991" duration="1424000" />
+      <workItem from="1583148860275" duration="877000" />
+      <workItem from="1583771926898" duration="619000" />
+      <workItem from="1583832796186" duration="104000" />
+      <workItem from="1583835479011" duration="635000" />
     </task>
     <servers />
   </component>
@@ -261,6 +263,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -330,26 +333,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582712291745" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1582705514203">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1582802955588">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582705514203" />
-    <state width="1877" height="355" key="GridCell.Tab.0.bottom" timestamp="1582741163952">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582802955588" />
+    <state width="1877" height="355" key="GridCell.Tab.0.bottom" timestamp="1582741973983">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="355" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582741163952" />
-    <state width="1877" height="355" key="GridCell.Tab.0.center" timestamp="1582741163952">
+    <state width="1877" height="355" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582741973983" />
+    <state width="1877" height="355" key="GridCell.Tab.0.center" timestamp="1582741973983">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="355" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582741163952" />
-    <state width="1877" height="355" key="GridCell.Tab.0.left" timestamp="1582741163951">
+    <state width="1877" height="355" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582741973983" />
+    <state width="1877" height="355" key="GridCell.Tab.0.left" timestamp="1582741973983">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="355" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582741163951" />
-    <state width="1877" height="355" key="GridCell.Tab.0.right" timestamp="1582741163952">
+    <state width="1877" height="355" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582741973983" />
+    <state width="1877" height="355" key="GridCell.Tab.0.right" timestamp="1582741973983">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="355" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582741163952" />
+    <state width="1877" height="355" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582741973983" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1581702208347">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -374,10 +377,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="335" key="NewPhpClassDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582193557001" />
-    <state x="398" y="269" key="SettingsEditor" timestamp="1582647621057">
+    <state x="398" y="269" key="SettingsEditor" timestamp="1582797379027">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="398" y="269" key="SettingsEditor/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582647621057" />
+    <state x="398" y="269" key="SettingsEditor/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582797379027" />
     <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1581527342359">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -402,10 +405,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1582208388873" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581599590672">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2439" y="186" width="672" height="561" key="search.everywhere.popup" timestamp="1583832807013">
+      <screen x="1920" y="0" width="1600" height="860" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1581599590672" />
+    <state x="2439" y="186" width="672" height="561" key="search.everywhere.popup/0.0.1920.1040/1920.0.1600.860@1920.0.1600.860" timestamp="1583832807013" />
     <state x="682" y="433" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1582734514864">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
